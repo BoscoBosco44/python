@@ -19,6 +19,4 @@ class Ninja:
     def getWeapon(self, weapon):
         self.holdingWeapon = True
         self.currentWeapon = weapon
-    # def attckWithWeapon(self, pirate, weapon):
-    #     self.weapon = weapon
-    #     pirate.health -= self.holdingWeapon.damage
+
