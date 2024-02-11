@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkerboard</title>
+</head>
+<body style="display: flex; flex-direction: column; align-items: center;">
+    <h1 style="background-color: black; color: white; display: flex;
+    justify-content: center; margin: auto; width: 11em;
+    margin-bottom: 3em;">** Checkerboard **</h1>
+
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; width: {{8 * x}}em">
+
+        {%  for j in range(0, y)  %}
+            {%  for i in range(0, x)  %}
+                <div style="height: 4em; width: 4em; background-color: black;"></div>
+                <div style="height: 4em; width: 4em; background-color: red;"></div>
+            {%  endfor  %}
+            {%  for i in range(0, x)  %}
+            <div style="height: 4em; width: 4em; background-color: red;"></div>
+            <div style="height: 4em; width: 4em; background-color: black;"></div>
+        {%  endfor  %}
+        {%  endfor  %}
+
+    </div>
+
+</body>
+</html>
