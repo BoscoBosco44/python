@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+</head>
+<body>
+    <form action="/process" method="post">
+        <div id="main" class="bg-dark p-3 w-50 mx-auto mt-5">
+            <h1 class="text-warning">Dojo Survey</h1>
+            <div>
+                <p class="text-light bg-dark">Name:</p>
+                <input name="usrName" type="text" class="form-control form-control-lg" placeholder="Your Full Name">
+            </div>
+            <div>
+                <p class="text-light bg-dark">Dojo Location</p>
+                <select name="location" class="form-select form-select-lg" aria-label="Default select example">
+                    <option value=""></option>
+                    <option value="Chicago">Chicago</option>
+                    <option value="LA">LA</option>
+                    <option value="New York">New York</option>
+                    <option value="Mars">Mars</option>
+                    <option value="Canada">Canada</option>
+                </select>
+            </div>
+
+
+            <div>
+                <p class="text-light bg-dark">Favrite Language</p>
+                <select name="favLang" class="form-select form-select-lg">
+                    <option value=""></option>
+                    <option value="Python">Python</option>
+                    <option value="HTML">HTML</option>
+                    <option value="French">French</option>
+                    <option value="C++">C++</option>
+                </select>
+            </div>
+
+            <div>
+                <p class="text-light bg-dark">Comments:</p>
+                <input name="usrComments" type="text" class="form-control form-control-lg" placeholder="Comments">
+            </div>
+            <button type="submit" class="bg-warning btn-lg btn-dark mt-3">Submit</button>
+
+        </div>
+    </form>
+</body>
+</html>

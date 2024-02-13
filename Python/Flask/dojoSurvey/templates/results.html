@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+</head>
+<body>
+    <form action="/" >
+        <div id="main" class="bg-dark p-3 w-50 mx-auto mt-5">
+            <h1 class="text-warning">Submitted Info</h1>
+
+            <div class="d-flex justify-content-between">
+                <div class="text-light bg-dark">
+                    <p>Name:</p>
+                    <p>Dojo Location:</p>
+                    <p>Fav Language:</p>
+                    <p>Comment:</p>
+                </div>
+
+                <div class="text-light bg-dark m-20">
+                    <p>{{  name_on_template  }}</p>
+                    <p>{{  location_on_template  }}</p>
+                    <p>{{  favLang_on_template  }}</p>
+                    <p>{{  comment_on_template  }}</p>
+                </div>
+            </div>
+
+            <button type="submit" class="bg-warning btn-lg btn-dark mt-3">Go Back</button>
+        </div>
+    </form>
+</body>
+</html>

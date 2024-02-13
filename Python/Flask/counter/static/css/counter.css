@@ -1,0 +1,31 @@
+*{
+    margin-top: 0.5em;
+    font-weight: bolder;
+    font-size: xxx-large;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    font-weight: bold;
+    font-size: medium;
+}
+
+#addBtn {
+    background-color: red;
+    border-radius: 1em;
+    padding: 1em;
+    color: white;
+}
+
+#resetBtn {
+    background-color: green;
+    border-radius: 1em;
+    padding: 1em;
+    color: white;
+}

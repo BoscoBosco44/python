@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <!-- <link rel="stylesheet" href="python\Python\Flask\counter\static\css\counter.css"> -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/counter.css') }}">
+
+</head>
+<body>
+        <div id="main">
+            <h1>Counter</h1>
+
+            <h2 name="curentCount"> {{ count_on_template }} time</h2>
+            <form action="/increment">
+                <div id="buttonBox">
+                    <button id="addBtn" type="submit">Add two visits!</button>
+                </div>
+            </form>
+            <form action="/reset">
+                <div id="buttonBox">
+                    <button id="resetBtn" type="submit">Reset</button>
+                </div>
+            </form>
+        </div>
+
+</body>
+</html>
