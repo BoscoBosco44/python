@@ -1,0 +1,11 @@
+DELETE FROM users WHERE id > 0;
+INSERT INTO users (id, first_name, last_name, email, created_at, updated_at) 
+values (1, "Peter", 'Bosco', 'email@email.com', NOW(), NOW()), (2, 'Belle', 'Weiler', 'belle@gmail.com', NOW(), NOW()), 
+(3, 'Luca', 'Bosco', 'luca@gmail.com', NOW(), NOW());
+SELECT * FROM users;
+select * from users WHERE email = 'email@email.com';
+update users set last_name = 'Pancakes' WHERE id = 3;
+select * from users order by id desc LIMIT 1;
+DELETE from users where id = 2;
+select * from users order by first_name;
+select * from users order by first_name desc;

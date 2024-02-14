@@ -1,0 +1,29 @@
+DELETE FROM dojos WHERE id > 0;
+INSERT INTO dojos (id, name, created_at, updated_at)
+values (1, 'small_dojo', NOW(), NOW()), (2, 'Medium_Dojo', NOW(), NOW()), (3, 'Large_Dojo', NOW(), NOW());
+INSERT INTO dojos (id, name, created_at, updated_at)
+values (4, 'red_dojo', NOW(), NOW()), (5, 'Blue_Dojo', NOW(), NOW()), (6, 'Black_Dojo', NOW(), NOW());insert into 'small dojo' (id, first_name, last_name, age, created_at, updated_at)
+
+
+
+insert into ninjas (id, first_name, last_name, age, created_at, updated_at, dojo_id)
+values (1, "Pual", "Guy", 27, NOW(), NOW(), 1), (2, "Peter", "Bosco", 24, NOW(), NOW(), 1), (3, "Luca", "Bosco", 27, NOW(), NOW(), 1);
+
+insert into ninjas (id, first_name, last_name, age, created_at, updated_at, dojo_id)
+values (4, "Sam", "Sam", 27, NOW(), NOW(), 2), (5, "Chogi", "Food", 24, NOW(), NOW(), 2), (6, "Mark", "KillsPeople", 27, NOW(), NOW(), 2);
+
+insert into ninjas (id, first_name, last_name, age, created_at, updated_at, dojo_id)
+values (7, "Naruto", "Uz", 27, NOW(), NOW(), 3), (8, "Egg", "killer", 24, NOW(), NOW(), 3), (9, "Bob", "KillsPeople", 27, NOW(), NOW(), 3);
+
+
+
+select * from ninjas where dojo_id = 1
+
+select * from ninjas where dojo_id = 3
+
+select dojo_id from ninjas order by dojo_id desc limit 1
+
+SELECT ninjas.*, dojos.*
+FROM ninjas
+INNER JOIN dojos ON ninjas.dojo_id = dojos.id
+WHERE ninjas.id = 6;
