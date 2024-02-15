@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/bootstrap.css') }}">
+
+</head>
+<body>
+    <div class="w-50 mx-auto">
+        <div class="row justify-content-center">
+            <h1>Welcome to the Great Number Game!!!</h1>
+            <p>I am thinking of a number between 1 and 100</p>
+        </div>
+
+        <div class="{{ returnBgColor }} container text-center">
+            <h3>{{  guessWas_on_template  }}</h3>
+            <h3>{{  hint_on_template  }}</h3>
+            <p>Number of Guesses: {{  numGuess_on_tempalte  }}</p>
+        </div>
+
+        <form action="/guess" method="post">
+            <div class="bg-dark d-flex flex-column text-center">
+                <h2 class="text-warning">Take a guess!</h2>
+                <div clas="w-10">
+                    <input class="form-control form-control-lg" name="theGuess" type="text">
+                    <button type="submit" class="bg-warning text-dark btn-lg">Guess</button>
+                </div>
+            </div>
+        </form>
+
+        <form action="/">
+            <button type="submit" class="bg-dark text-warning btn-lg">Restart</button>
+        </form>
+    </div>
+</body>
+</html>

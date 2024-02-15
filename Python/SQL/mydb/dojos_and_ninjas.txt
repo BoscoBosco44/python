@@ -27,3 +27,8 @@ SELECT ninjas.*, dojos.*
 FROM ninjas
 INNER JOIN dojos ON ninjas.dojo_id = dojos.id
 WHERE ninjas.id = 6;
+
+
+select ninjas.*, dojos.*
+from ninjas
+inner join dojos on ninjas.dojo_id = dojos.id
