@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Game</title>
+</head>
+<body>
+    <h1>Submit a Game to the DB!</h1>
+    <form action="/submit_game_form" method="post">
+
+        <div>
+            <label for="name">Name : </label>
+            <input type="text" name="name">
+        </div>
+        <div>
+            <label for="genre">Genre : </label>
+            <input type="text" name="genre">
+        </div>
+        <div>
+            <label for="release_year">Release year : </label>
+            <input type="text" name="release_year">
+        </div>
+
+        <button>Add Game to DB</button>
+    </form>
+</body>
+</html>
