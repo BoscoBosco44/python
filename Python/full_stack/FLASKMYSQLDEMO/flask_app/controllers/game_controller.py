@@ -1,6 +1,6 @@
-from flask_app.templates import app
+from flask_app import app
 from flask_app.models.game_model import Game
-from flask import render_tmplate, request, redirect
+from flask import render_template, request, redirect
 
 
 
@@ -10,13 +10,15 @@ def index():
     # call the get all classmethod to get all friends
     # friends = Friend.get_all()
     # print(friends)
-    return render_tmplate("index.html")
+    all_games = Game.get_all()
+
+    return render_template("index.html", all_games=all_games)
 
 
 @app.route('/game_form')
 def show_form():
     
-    return render_tmplate('game_form.html')
+    return render_template('game_form.html')
 
 @app.route('/submit_game_form', methods=['POST'])
 def submit_game_form():
@@ -28,3 +30,12 @@ def submit_game_form():
     }
     Game.add_game(data)
     return redirect('/')
+
+
+#Show one game route
+
+@app.route('/game/<int:game_id>')
+def show_one_game(game_id):
+    one_game = Game.get_one({ 'game_id' : game_id})
+
+    return render_template('one_game.html', one_game=one_game)

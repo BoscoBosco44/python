@@ -9,16 +9,17 @@ class Game:
         self.name = data['name']
         self.genre = data['genre']
         self.release_year = data['release_year']
-        self.created_at = data['createed_at']
+        self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         
     
     @classmethod
     def get_all(cls):
-        query = """" 
-        SELECT *
-        FROM games;
+        query = """ 
+            SELECT *
+            FROM games;
         """
+
 
         results = connectToMySQL(cls.DB).query_db(query)
         print(f"Results : {results}")
@@ -30,6 +31,21 @@ class Game:
 
         return games
     
+
+    @classmethod
+    def get_one(cls, data):
+        query = """
+            SELECT *
+            FROM games
+            WHERE id = %(game_id)s;
+        """
+
+        results = connectToMySQL(cls.DB).query_db(query, data)
+
+        one_game = cls(results[0])
+
+        return one_game
+
 
     @classmethod
     def add_game(cls, data):

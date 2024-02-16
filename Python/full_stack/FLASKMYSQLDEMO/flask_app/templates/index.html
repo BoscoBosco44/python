@@ -8,7 +8,29 @@
 <body>
     <h1>Welcome to my Game Collection!</h1>
 
+    <h3>
+        <a href="/game_form">Add Game to DB</a>
+    </h3>
 
-    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h2>All of my Games</h2>
+    <ul>
+
+        {%  for game in all_games  %}
+            <li>
+                <a href="/game/{{ game.id }}">
+                    {{  game.name  }}
+                </a>
+            </li>
+        {%  endfor  %}
+    </ul>
+
+
+
 </body>
 </html>
