@@ -36,6 +36,35 @@ def submit_game_form():
 
 @app.route('/game/<int:game_id>')
 def show_one_game(game_id):
-    one_game = Game.get_one({ 'game_id' : game_id})
+    one_game = Game.get_one(game_id)
 
     return render_template('one_game.html', one_game=one_game)
+
+
+
+@app.route('/game/edit/<int:game_id>')
+def show_eddit_form(game_id):
+    one_game = Game.get_one(game_id)
+    
+    return render_template('edit_form.html', one_game=one_game)
+
+
+@app.route('/submit_edit_form/<int:game_id>', methods=['POST'])
+def submit_edit_form(game_id):
+
+    data = {
+        'name': request.form['name'],
+        'genre': request.form['genre'],
+        'release_year': request.form['release_year'],
+        'game_id' : game_id
+    }
+    Game.update_game_game(data)
+    return redirect('/')
+
+
+#Delete
+@app.route('/delete_game_from_DB/<int:game_id>')
+def delete_this_game_from_DB(game_id):
+
+    Game.delete_game(game_id)
+    return redirect('/')

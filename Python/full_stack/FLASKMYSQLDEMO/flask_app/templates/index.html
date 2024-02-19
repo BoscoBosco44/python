@@ -24,7 +24,10 @@
         {%  for game in all_games  %}
             <li>
                 <a href="/game/{{ game.id }}">
-                    {{  game.name  }}
+                    {{  game.name  }} | 
+                    <a href="/game/edit/{{ game.id }}">
+                        Edit Game Link
+                    </a>
                 </a>
             </li>
         {%  endfor  %}

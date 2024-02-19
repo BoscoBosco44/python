@@ -33,14 +33,17 @@ class Game:
     
 
     @classmethod
-    def get_one(cls, data):
+    def get_one(cls, game_id):
         query = """
-            SELECT *
-            FROM games
-            WHERE id = %(game_id)s;
+        SELECT *
+        FROM games
+        WHERE id = %(game_id)s;
         """
 
+        data = {'game_id' : game_id }
         results = connectToMySQL(cls.DB).query_db(query, data)
+        print("Right here")
+        print("These results: ", results)
 
         one_game = cls(results[0])
 
@@ -54,4 +57,27 @@ class Game:
         INSERT INTO games (name, genre, release_year)
         VALUES ( %(name)s, %(genre)s, %(release_year)s )
         """
+        return connectToMySQL(cls.DB).query_db(query, data)
+    
+
+
+    @classmethod
+    def update_game(cls, data):
+        query = """
+            UPDATE games
+            SET name=%(name)s, genre=%(genre)s, release_year=%(release_year)s
+            WHERE id = %(game_id)s
+            """
+
+        return connectToMySQL(cls.DB).query_db(query, data)
+    
+
+    @classmethod
+    def delete_game(cls, game_id):
+        print("Game id from delte_game CLASSMETHOD: ", game_id)
+        query = """DELETE FROM games WHERE id = %(game_id)s"""
+        data = {"game_id": game_id}
+
+        print('DELETE QUERY: ', query)
+
         return connectToMySQL(cls.DB).query_db(query, data)

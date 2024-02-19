@@ -6,12 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    
+
     <h3>{{  one_game.name  }}</h3>
 
     <div>
         <p>Game Id: {{  one_game.id  }}</p>
-        <p>Game Genre: {{  one_game.genre  }}</p>
+        <p name="name">Game Genre: {{  one_game.genre  }}</p>
         <p>Game Release Year: {{  one_game.release_year  }}</p>
         <p>Game Uploaded On: {{  one_game.created_at  }}</p>
         
@@ -24,6 +24,13 @@
     <h3>
         <a href="/game_form">Add Game to DB</a>
     </h3>
+
+    <br>
+    <br>
+
+    <a href="/delete_game_from_DB/{{ one_game.id }}">
+        <button type="submit">DELETE THIS GAME</button>
+    </a>
 
 
 </body>

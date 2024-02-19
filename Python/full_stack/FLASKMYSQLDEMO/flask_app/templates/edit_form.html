@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Game</title>
+</head>
+<body>
+    <h1>Edit a Game to the DB!</h1>
+    <form action="/submit_edit_form/{{  one_game.id  }}" method="post">
+
+        <div>
+            <label for="name">Name : </label>
+            <input type="text" name="name" placeholder="{{one_game.name}}">
+        </div>
+        <div>
+            <label for="genre">Genre : </label>
+            <input type="text" name="genre" value="{{one_game.genre}}">
+        </div>
+        <div>
+            <label for="release_year">Release year : </label>
+            <input type="text" name="release_year" value="{{one_game.release_year}}">
+        </div>
+
+        <button>Update Game to DB</button>
+    </form>
+
+    <p>
+        <a href="/">Home</a>
+    </p>
+
+
+</body>
+</html>
