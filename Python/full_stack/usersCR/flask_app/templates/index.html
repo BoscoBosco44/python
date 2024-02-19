@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display All Users</title>
+    <link rel="stylesheet" href="{{  url_for('static', filename='styles.css')  }}">
+</head>
+<body>
+    <h1>All Users</h1>
+    <br>
+    <br>
+    
+    <table>
+        <tr>
+            <thead>ID</thead>
+            <thead>Full Name</thead>
+            <thead>Email</thead>
+            <thead>Created At</thead>
+        </tr>
+
+        {%  for user in all_users  %}
+            <tr>
+                <td>{{  user.id  }}</td>
+                <td>{{  user.first_name  }}</td>
+                <td>{{  user.email  }}</td>
+                <td>{{ user.created_at  }}</td>
+                <td>
+                    <a href="/show_one_user/{{ user.id }}">Show</a>|
+                    <a href="/edit/{{ user.id }}">Edit</a>|
+                    <a href="">Delete</a>|
+                </td>
+            </tr>
+        {%  endfor  %}
+    </table>
+    <br>
+    <a href="/createNewUser">
+        <button>Add New User</button>
+    </a>
+    
+
+</body>
+</html>

@@ -49,17 +49,6 @@ def show_eddit_form(game_id):
     return render_template('edit_form.html', one_game=one_game)
 
 
-@app.route('/submit_edit_form/<int:game_id>', methods=['POST'])
-def submit_edit_form(game_id):
-
-    data = {
-        'name': request.form['name'],
-        'genre': request.form['genre'],
-        'release_year': request.form['release_year'],
-        'game_id' : game_id
-    }
-    Game.update_game_game(data)
-    return redirect('/')
 
 
 #Delete
