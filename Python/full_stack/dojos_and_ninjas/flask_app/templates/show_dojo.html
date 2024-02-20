@@ -15,6 +15,13 @@
             <th>Last Name</th>
             <th>Age</th>
         </tr>
+        {%  for ninja in one_dojo.ninjas  %}
+            <tr>
+                <td>{{  ninja.first_name  }}</td>
+                <td>{{  ninja.last_name  }}</td>
+                <td>{{  ninja.age  }}</td>
+            </tr>
+        {%  endfor  %}
 
     </table>
 

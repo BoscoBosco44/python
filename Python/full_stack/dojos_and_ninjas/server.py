@@ -1,6 +1,7 @@
 from flask_app import app
 
-from flask_app.controllers import dojo_controler
+from flask_app.controllers import dojo_controler, ninja_controler
+
 # =========================================================
 # REMEMBER TO IMPORT CONTROLLERS INTO YOUR SERVER FILE!
 # =========================================================
