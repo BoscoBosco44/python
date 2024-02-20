@@ -63,19 +63,27 @@ class User:
         data = {'user_id': user_id}
         results = connectToMySQL(cls.db).query_db(query, data)
         print("RESULTS FROM 'SHOW_ONE_USER' : ", results)
-
         one_user = cls(results[0])
         return one_user
     
     @classmethod
-    def edit_user(cls, user_id):
+    def edit_user(cls, data):
+        
         query = """
             UPDATE users
             SET first_name = %(first_name)s, last_name=%(last_name)s, email=%(email)s
-            WHERE id = %(user_id)s
+            WHERE id = %(id)s
         """
-        data = {'user_id':user_id}
         results = connectToMySQL(cls.db).query_db(query, data)
         print(data)
         print("RESULTS FROM 'edit_user' : ", results)
         return data
+    
+    @classmethod
+    def delete_user(cls, id):
+        query = "DELETE FROM users WHERE id = %(id)s"
+        data = {'id': id}
+        print("---------------------------------------")
+        print("User ", id, " deleted")
+        # return print("User ", id, " deleted"), connectToMySQL(cls.db).query_db(query)
+        return connectToMySQL(cls.db).query_db(query, data)

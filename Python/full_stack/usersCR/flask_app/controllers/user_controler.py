@@ -66,11 +66,26 @@ def show_edit_page(user_id):
 #    Update Form Route, Submit Update Form Route
 # ====================================
 
-@app.route('/editUser/<int:user_id>', methods=['POST'])
-def edit_user(user_id):
-    User.edit_user(user_id)
+@app.route('/editUser/<int:id>', methods=['GET','POST'])
+def edit_user(id):
+
+    data = {
+        'first_name': request.form['first_name'],
+        'last_name': request.form['last_name'],
+        'email': request.form['email'],
+        'id': id
+    }
+
+    print("edit user data: ", data)
+
+    User.edit_user(data)
     return redirect('/')
 
 # ====================================
 #    Delete Routes
 # ====================================
+
+@app.route('/delete/<int:id>')
+def delete_user(id):
+    User.delete_user(id)
+    return redirect('/')
