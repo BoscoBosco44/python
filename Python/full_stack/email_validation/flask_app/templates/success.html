@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Email Validation</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+</head>
+<body>
+    <div class="bg-dark p-3 w-50 mx-auto mt-5">
+        {%  for email in emails  %}
+            <div class="bg-light p-3 w-50 mx-auto mt-5">
+                <h2 class="text-warning bg-dark">Email Address: {{ email.id }}</h2>
+                <h2 class="text-dark">{{  email.email  }}</h2>
+            </div>
+        {%  endfor  %}
+        <a href="/">
+            <button>Home</button>
+        </a>
+    </div>
+
+
+
+</body>
+</html>

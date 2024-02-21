@@ -8,12 +8,21 @@
 
 </head>
 <body>
+    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+        {% if messages %}                            <!-- check if there are any messages -->
+            {% for message in messages %}            <!-- loop through the messages -->
+                <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+
     <form action="/process" method="post">
         <div id="main" class="bg-dark p-3 w-50 mx-auto mt-5">
             <h1 class="text-warning">Dojo Survey</h1>
             <div>
                 <p class="text-light bg-dark">Name:</p>
-                <input name="usrName" type="text" class="form-control form-control-lg" placeholder="Your Full Name">
+                <input name="name" type="text" class="form-control form-control-lg" placeholder="Your Full Name">
             </div>
             <div>
                 <p class="text-light bg-dark">Dojo Location</p>
@@ -30,7 +39,7 @@
 
             <div>
                 <p class="text-light bg-dark">Favrite Language</p>
-                <select name="favLang" class="form-select form-select-lg">
+                <select name="language" class="form-select form-select-lg">
                     <option value=""></option>
                     <option value="Python">Python</option>
                     <option value="HTML">HTML</option>
@@ -41,7 +50,7 @@
 
             <div>
                 <p class="text-light bg-dark">Comments:</p>
-                <input name="usrComments" type="text" class="form-control form-control-lg" placeholder="Comments">
+                <input name="comment" type="text" class="form-control form-control-lg" placeholder="Comments">
             </div>
             <button type="submit" class="bg-warning btn-lg btn-dark mt-3">Submit</button>
 
