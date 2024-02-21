@@ -24,6 +24,7 @@ def add_email_to_db():
         Email_Address.add_email_to_DB(data)
         return redirect('/email_valid')
     else:
+        
         return redirect('/')
 
 # ====================================
