@@ -3,8 +3,8 @@ from flask_app import app
 # =========================================================
 # REMEMBER TO IMPORT CONTROLLERS INTO YOUR SERVER FILE!
 # =========================================================
+from flask_app.models import user_model
 from flask_app.controllers import user_controler
-from flask_app.controllers import recipe_controler
 # from flask_app.controllers import
 
 # RUN pipenv install PyMySQL flask flask-bcrypt
