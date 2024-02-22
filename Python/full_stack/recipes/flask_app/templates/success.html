@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registration</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+</head>
+<body>
+    <form action="/logout">
+        <div class="d-flex justify-content-around align-items-center mt-5 ">
+                <div class="bg-dark w-25 text-light p-3">
+                    <h1>ID number: {{ session['user_id'] }}</h1>
+                    <button type="submit">Log Out</button>
+                </div>
+        </div>
+    </form>
+</body>
+</html> 
+
