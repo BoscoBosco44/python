@@ -34,9 +34,10 @@ class User:
             is_valid = False
             flash("Email is invalid")
         else:
-            query = "SELECT * FROM users WHERE email = %(new_email)s;"
+            query = "SELECT * FROM users WHERE email = %(email)s;"
             results = connectToMySQL(User.DB).query_db(query, new_user)
-            if len(results) >= 1:
+            # if len(results) >= 1:
+            if results:
                 flash("Email taken, try a different Email!")
                 is_valid = False
 
