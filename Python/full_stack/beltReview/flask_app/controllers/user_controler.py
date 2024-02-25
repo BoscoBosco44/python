@@ -1,6 +1,7 @@
 from flask import render_template, redirect, request, session, flash
 from flask_app import app
 from flask_app.models.user_model import User
+from flask_app.models.party_model import Party
 
 from flask_bcrypt import Bcrypt  # Only needed on routes related to login/reg
 bcrypt = Bcrypt(app)
@@ -10,10 +11,10 @@ bcrypt = Bcrypt(app)
 # from flask_app.models.table_model import classname
 @app.route('/')
 def home():
-
+    
     return render_template('register_login.html')
 
-# ====================================
+# ==================================== 
 #    Create Routes
 #    Show Form Route, Submit Form Route
 # ====================================
@@ -81,12 +82,42 @@ def Dashboard():
         flash('Please sign in!')
         return redirect('/')
     
-    return render_template('dashboard.html')
+    one_user = User.GetUserById({'id': session['user_id']})
+
+    all_parties = Party.get_all_parties()
+    
+    return render_template('dashboard.html', one_user=one_user, all_parties=all_parties)
+
+
+
+@app.route('/parties/<int:party_id>')
+def show_party(party_id):
+    if 'user_id' not in session:
+        flash('Please sign in!')
+        return redirect('/')
+    
+    one_party = Party.get_one_party({'party_id': party_id})
+
+    return render_template('one_party.html', one_party=one_party)
+
+
+
+@app.route('/my_parties')
+def show_myParties():
+    if 'user_id' not in session:
+        flash('Please sign in!')
+        return redirect('/')
+    
+    user_with_parties = User.GetMyParties({'user_id': session['user_id']})
+
+    return render_template('user_parties.html', user_with_parties=user_with_parties)
+
 
 # ====================================
 #    Update Routes
 #    Update Form Route, Submit Update Form Route
 # ====================================
+
 
 
 # ====================================

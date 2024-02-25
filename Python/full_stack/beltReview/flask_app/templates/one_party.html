@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show one party</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+</head>
+<body>
+
+    <h1>Welcome, {{ one_party.party_poster.first_name }}:</h1>
+
+    <div class="bg-dark text-light justify-content-center p-3">
+
+        <h2>{{ one_party.name }}</h2>
+        <br>
+        <br>
+        <p>Posted By : {{ one_party.party_poster.first_name }} 
+            {{ one_party.party_poster.last_name }}
+        </p>
+
+        <p>When : {{ one_party.party_date }}</p>
+        <p>Location : {{ one_party.location }}</p>
+
+        <p>All ages : 
+        {% if one_party.all_ages == 0 %} 
+            <td>No</td>
+        {% endif %}
+        {% if one_party.all_ages == 1 %} 
+            <td>Yes</td>
+        {% endif %}
+        </p>
+
+        <br>
+        <br>
+        <p>Description : {{ one_party.description }}</p>
+    </div>
+
+    <a href="/dashboard">Dashboard</a>
+</body>
+</html>

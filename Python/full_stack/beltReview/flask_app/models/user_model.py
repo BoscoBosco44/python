@@ -2,6 +2,9 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 import re
 
+from flask_app.models import party_model
+
+
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 
@@ -17,6 +20,7 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.my_parties = []
 
 
     @staticmethod
@@ -78,3 +82,34 @@ class User:
         if len(result) < 1:
             return False
         return cls(result[0])
+    
+
+    @classmethod
+    def GetMyParties(cls, data):
+        query = """
+            SELECT * FROM users
+            JOIN parties ON users.id = parties.user_id;
+        """
+        results = connectToMySQL(cls.DB).query_db(query, data)
+
+        one_user = cls(results[0])
+
+        for row in results:
+        #create name baised on what object you want to build
+            party_data = {
+                'id': row['parties.id'],
+                'name': row['name'],
+                'location': row['location'],
+                'party_date': row['party_date'],
+                'all_ages': row['all_ages'],
+                'description': row['description'],
+                'created_at': row['parties.created_at'], #users.blank because users is the table we want the id from
+                'updated_at': row['parties.updated_at'],
+                'user_id': row['user_id']
+            }
+
+            one_user.my_parties.append(party_model.Party(party_data))
+            # Construction a single party object
+            #Inside of that party Object is a User object in the feild "party_poster"
+        
+        return one_user

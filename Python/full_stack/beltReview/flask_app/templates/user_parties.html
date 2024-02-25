@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dashboard</title>
+    <title>all my parties</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
 
 </head>
 <body>
-
-    <h1>Welcome, {{ one_user.first_name }}!
-        <a href="/my_parties">
-            <button>My Parties</button>
-        </a>
-        <a href="/logout">
-            <button>Logout</button>
+    
+    <h1>{{ user_with_parties.first_name }}'s Parties
+        <a href="/dashboard">
+            <button>Home</button>
         </a>
     </h1>
 
@@ -31,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for party in all_parties %}
+                {% for party in user_with_parties.my_parties %}
                 <tr>
                     <td>{{ party.name }}</td>
                     <td>{{ party.location }}</td>
@@ -61,7 +58,7 @@
     </div>
 
 
-    <a href="/parties/new">Plan a Party</a>
+
 
 </body>
 </html>

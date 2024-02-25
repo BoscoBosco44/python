@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Party</title>
+</head>
+<body>
+    
+    <form action="" method="post">
+        <div>
+            <label for="name">What : </label>
+            <input type="text" name="name">
+        </div>
+        <div>
+            <label for="location">Where : </label>
+            <input type="text" name="location">
+        </div>
+        <div>
+            <label for="party_date">When : </label>
+            <input type="date" name="party_date">
+        </div>
+        <div>
+            <label for="all_ages">All ages : </label>
+            <input type="radio" name="all_ages" value="1">
+            <label for="True">True</label>
+            <input type="radio" name="all_ages" value="0">
+            <label for="False">False</label>
+
+        </div>
+        <div>
+            <label for="Description">Description : </label>
+            <textarea name="description" cols="30" rows="10"></textarea>
+        </div>
+        
+        <button type="submit">Edit Party in DB</button>
+
+    </form>
+
+    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+        {% if messages %}                            <!-- check if there are any messages -->
+            {% for message in messages %}            <!-- loop through the messages -->
+                <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+</body>
+</html>
