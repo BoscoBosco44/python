@@ -6,31 +6,45 @@
     <title>Edit Party</title>
 </head>
 <body>
-    
-    <form action="" method="post">
+    <h1>Edit Party
+        <a href="/dashboard">
+            <button>Home</button>
+        </a>
+    </h1>
+    <form action="/parties/{{one_party.id}}/edit/submit" method="post">
         <div>
             <label for="name">What : </label>
-            <input type="text" name="name">
+            <input type="text" name="name" value="{{ one_party.name }}">
         </div>
         <div>
             <label for="location">Where : </label>
-            <input type="text" name="location">
+            <input type="text" name="location" value="{{ one_party.location }}">
         </div>
         <div>
             <label for="party_date">When : </label>
-            <input type="date" name="party_date">
+            <input type="date" name="party_date" value="{{ one_party.party_date }}">
         </div>
         <div>
             <label for="all_ages">All ages : </label>
-            <input type="radio" name="all_ages" value="1">
+
+            {%  if one_party.all_ages == 1  %}
+            <input type="radio" name="all_ages" value="1" checked>
             <label for="True">True</label>
             <input type="radio" name="all_ages" value="0">
             <label for="False">False</label>
+            {%  else  %}
+            <input type="radio" name="all_ages" value="1">
+            <label for="True">True</label>
+            <input type="radio" name="all_ages" value="0" checked> 
+            <label for="False">False</label>
+            {%  endif  %}
 
         </div>
         <div>
             <label for="Description">Description : </label>
-            <textarea name="description" cols="30" rows="10"></textarea>
+            <textarea name="description" cols="30" rows="10">
+                {{ one_party.name }}
+            </textarea>
         </div>
         
         <button type="submit">Edit Party in DB</button>

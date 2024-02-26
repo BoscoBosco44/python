@@ -48,7 +48,7 @@
                     {% if session['user_id'] == party.party_poster.id %}
                     <td>
                         <a href="/parties/{{ party.id }}">View | </a>
-                        <a href="">Edit | </a>
+                        <a href="/parties/{{ party.id }}/edit">Edit | </a>
                         <a href="">Delete</a>
                     </td>
                     {% else %}

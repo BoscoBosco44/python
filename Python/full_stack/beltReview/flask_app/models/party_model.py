@@ -110,3 +110,27 @@ class Party:
 
         one_party.party_poster = user_model.User(user_data)
         return one_party
+
+    @classmethod
+    def update_party(cls, data):
+        query = """
+            UPDATE parties
+            SET name = %(name)s,
+            location = %(location)s,
+            party_date = %(party_date)s,
+            all_ages = %(all_ages)s,
+            description = %(description)s
+            WHERE id = %(party_id)s;
+        """
+        thing = connectToMySQL(cls.DB).query_db(query, data)
+        print("update_party results : ", thing)
+        return thing
+    
+    #DELETE Party method
+    @classmethod
+    def delete_party(cls, data):
+        query = """
+            DELETE FROM parties
+            WHERE id = %(party_id)s;
+        """
+        return connectToMySQL(cls.DB).query_db(query, data)

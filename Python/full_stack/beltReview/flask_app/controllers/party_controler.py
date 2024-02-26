@@ -31,7 +31,7 @@ def Submit_Party_Form():
     # }  THIS CODE IS EQUAL TO THE CODE BELLOW
 
     party_data = {
-        **request.form,
+        **request.form,                                         #same as this
         'user_id': session['user_id']
     }
 
@@ -39,7 +39,7 @@ def Submit_Party_Form():
 
     return redirect('/dashboard')
 
-
+#Show Edit form for party
 @app.route('/parties/<int:party_id>/edit')
 def show_edit_party(party_id):
     if 'user_id' not in session:
@@ -49,3 +49,21 @@ def show_edit_party(party_id):
     one_party = Party.get_one_party({'party_id': party_id})
 
     return render_template('edit_party.html', one_party=one_party)
+
+#submit edit form route
+@app.route('/parties/<int:party_id>/edit/submit', methods=['POST'])
+def submit_edit_form(party_id):
+
+    if not Party.validate_party(request.form):
+        return redirect(f'/parties/{party_id}/edit')
+        
+    Party.update_party({                                #same as this
+        'name': request.form['name'],
+        'location': request.form['location'],
+        'party_date': request.form['party_date'],
+        'all_ages': request.form['all_ages'],
+        'description': request.form['description'],
+        'party_id': party_id
+    })
+
+    return redirect('/dashboard')
