@@ -17,11 +17,14 @@ bcrypt = Bcrypt(app)
 @app.route('/add_new_recipe', methods=['GET','POST'])
 def add_new_recipe():
 
+    if not Recipe.validate_recipe(request.form):
+        return redirect('/add_new_recipe_page')
+
     data = {
         'name': request.form['name'],
         'description': request.form['description'],
         'instructions': request.form['instructions'],
-        'unser_30_min': request.form['under_30_min'],
+        'under_30_min': request.form['under_30_min'],
         'user_id': session['user_id'],
     }
 
@@ -45,8 +48,9 @@ def get_all_user_recipes():
 
 @app.route('/users_recipes')
 def show_users_recipes():
+    all_recipes = Recipe.get_all_recipies()
 
-    return render_template('view_user_recipes.html')
+    return render_template('view_user_recipes.html', all_recipes=all_recipes)
 
 @app.route('/add_new_recipe_page')
 def show_add_recipe_page():

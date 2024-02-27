@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+</head>
+<body>
+    <h3>Welcome, {{  pies[0].pie_creator.first_name  }}
+        <a href="/logout">
+            <button>Logout</button>
+        </a>
+    </h3>
+    <div class="d-flex justify-content-center">
+        <div class="bg-dark text-light justify-content-center p-3 w-50">
+            <br>
+            <br>
+            <h1>View All Pies</h1>
+            <br>
+            <table class="table bg-light text-dark">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Baker</th>
+                        <th>Votes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%  for pie in pies  %}
+                            <tr>
+                                <td>
+                                    <a href="/pies/{{ pie.id }}">{{  pie.name  }}</a>
+                                </td>
+                                <td>{{  pie.pie_creator.first_name  }} {{  pie.pie_creator.last_name  }}</td>
+                                <td>{{  pie.votes  }}</td>
+                            </tr>
+                    {%  endfor  %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <a href="/dashboard">
+        <button class="btn">Home</button>
+    </a>
+
+
+</body>
+</html>

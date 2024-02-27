@@ -78,7 +78,7 @@ class User:
         return email_allowed
     
     @classmethod
-    def get_by_email(cls,data):
+    def get_by_email(cls, data):
         query = "SELECT * FROM users WHERE email = %(email)s;"
         result = connectToMySQL(cls.DB).query_db(query,data)
         # Didn't find a matching user

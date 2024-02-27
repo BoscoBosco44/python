@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+</head>
+<body>
+    <h3>Welcome, UsersName
+        <a href="/logout">
+            <button>Logout</button>
+        </a>
+    </h3>
+    <div class="d-flex justify-content-center">
+
+        <div class="d-flex flex-column bg-dark text-light justify-content-center p-3 w-50">
+            <br>
+            <h1>{{ pie.name }}</h1>
+            <h3>By {{ pie.pie_creator.first_name }} {{ pie.pie_creator.last_name }}</h3>
+            <br>
+            <br>
+            <br>
+            <p>{{ pie.filling }} with a {{ pie.crust }} crust</p>
+
+        </div>
+    </div>
+
+    <a href="/pies">
+        <button class="btn">View All Pies</button>
+    </a>
+    <a href="/dashboard">
+        <button class="btn">Home</button>
+    </a>
+
+</body>
+</html>

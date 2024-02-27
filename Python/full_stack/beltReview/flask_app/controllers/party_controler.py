@@ -67,3 +67,10 @@ def submit_edit_form(party_id):
     })
 
     return redirect('/dashboard')
+
+#DELETE ROUTE
+@app.route('/parties/delete/<int:party_id>')
+def delete_party(party_id):
+    Party.delete_party(party_id)
+
+    return redirect('/dashboard')

@@ -47,10 +47,14 @@
                                 <a href="">View Recipe</a>
                             </td>
                         </tr>
-                        {%  for recipe in recipe_list  %}
+                        {%  for recipe in all_recipes  %}
                             <tr>
                                 <td>{{  recipe.name  }}</td>
-
+                                <td>{{  recipe.under_30_min  }}</td>
+                                <td>{{  recipe.recipe_poster.first_name  }}</td>
+                                <td>
+                                    <a href="">View Recipe</a>
+                                </td>
                             </tr>
                         {%  endfor  %}
                     </table>
